@@ -62,13 +62,13 @@ public class TechJobs {
 
                 if (searchField.equals("all")) {
                     System.out.println("Search all fields not yet implemented.");
+                    printJobs(JobData.findByValue(searchTerm));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
             }
         }
     }
-
     // ﻿Returns the key of the selected item from the choices Dictionary
     private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
 
@@ -108,10 +108,10 @@ public class TechJobs {
         return choiceKeys[choiceIdx];
     }
 
+
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("Under construction");
         if(someJobs.size()==0){
             System.out.println("none found");
         }

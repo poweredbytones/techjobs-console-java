@@ -55,6 +55,45 @@ public class JobData {
     }
 
     /**
+     * allow the user to search for a Value in all columns
+     *
+     *
+     *
+     *
+     *
+     * @param value   term we are searching for searched.
+     *
+     * @return List of all Postings matching the criteria
+     */
+
+    public static ArrayList<HashMap<String, String>> findByValue(String value)
+    {
+    // load data, if not already loaded
+            loadData();
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        int j = 0;
+        boolean valueIsFound= false;
+        for (HashMap<String, String> row : allJobs) {
+            valueIsFound= false;
+            for(String item:row.keySet())
+            {
+                if(row.get(item).contains(value))
+                {
+                    valueIsFound = true;
+                }
+            }
+            if(valueIsFound)
+                {
+                    jobs.add(row);
+                }
+            j++;
+            }
+        System.out.println(j+" listings checked! "+jobs.size()+" listings found");
+
+        return jobs;
+    }
+
+    /**
      * Returns results of search the jobs data by key/value, using
      * inclusion of the search term.
      *
